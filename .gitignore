@@ -1,0 +1,29 @@
+# Node.js related #
+###################
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+.next/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.DS_Store
+
+# Docker related #
+##################
+docker-compose.yml
+*.log
+docker-volumes/
+
+# Terraform related #
+#####################
+*.tfstate
+*.tfstate.*.backup
+*.tfstate.backup
+*.tfvars
+.terraform/
+terraform.tfvars
+terraform.tfstate.d/
+*crash.log

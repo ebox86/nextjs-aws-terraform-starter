@@ -1,0 +1,33 @@
+# Stage 1: Building the code
+FROM node:18 AS builder
+
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json (if available)
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of your app's source code from your host to your image filesystem.
+COPY . .
+
+# Build the Next.js app
+RUN npm run build
+
+# Stage 2: Run the built app
+FROM node:18
+
+WORKDIR /usr/src/app
+
+# Copy built assets from the builder stage
+COPY --from=builder /usr/src/app/public ./public
+COPY --from=builder /usr/src/app/.next ./.next
+COPY --from=builder /usr/src/app/node_modules ./node_modules
+COPY --from=builder /usr/src/app/package.json ./package.json
+
+# Make port 3000 available to the world outside this container
+EXPOSE 3000
+
+# Start the app
+CMD ["npm", "start"]
