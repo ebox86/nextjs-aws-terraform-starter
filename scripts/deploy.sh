@@ -38,9 +38,17 @@ ECR_REPOSITORY=$(terraform output -raw ecr_repository_url)
 # Navigate to the Next.js app directory
 cd ../nextjs-app
 
+# Determine the Docker build command based on the architecture
+DOCKER_BUILD_COMMAND="docker build -t nextjs-app ."
+
+# Check if running on M1 Mac and adjust the Docker build command
+if [ "$(uname -m)" == "arm64" ] && [ "$(uname -s)" == "Darwin" ]; then
+    DOCKER_BUILD_COMMAND="docker buildx build -t nextjs-app --platform=linux/amd64 ."
+fi
+
 # Build the Docker image
 echo "Building Docker image..."
-docker build -t nextjs-app .
+$DOCKER_BUILD_COMMAND
 
 # Tag the Docker image for the ECR repository
 echo "Tagging Docker image..."
