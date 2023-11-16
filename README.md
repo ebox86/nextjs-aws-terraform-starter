@@ -7,23 +7,21 @@ nextjs starter using terraform on aws
 nextjs-aws-terraform-starter/
 │
 ├── nextjs-app/                # Next.js application source code
-│   ├── pages/                 # Pages directory for Next.js
-│   ├── public/                # Public assets
-│   ├── styles/                # CSS or other styling files
-│   ├── .env.local             # Local environment variables
+│   ├── src/
+│   |   └── app/               # App router directory for Next.js - where index page lives
+│   |       └── api/           # Api router directory for Next.js
+│   |           └── health/    # Health check lives here
 │   ├── package.json           # Node.js dependencies and scripts
-│   ├── Dockerfile             # Dockerfile for building your Next.js app
-│   └── ...
+│   └── Dockerfile             # Dockerfile for building your Next.js app
 │
 ├── terraform/                 # Terraform configuration files
 │   ├── main.tf                # Main Terraform configuration
 │   ├── variables.tf           # Terraform variables
-│   ├── outputs.tf             # Terraform outputs
-│   └── ...
+│   └── outputs.tf             # Terraform outputs
 │
 ├── scripts/                   # Utility and deployment scripts
 │   ├── deploy.sh              # Script for building and deploying the app
-│   └── ...
+│   └── teardown.sh            # Script for tearing down all components 
 │
 ├── .gitignore                 # Git ignore file
 └── README.md                  # Project README
@@ -31,7 +29,9 @@ nextjs-aws-terraform-starter/
 
 ## Setup
 
-navigate to /scripts and run `./deploy.sh`
+navigate to /scripts and run `./deploy.sh` script.
+
+to destroy environment, run `./teardown.sh` script.
 
 ### Notes
 
