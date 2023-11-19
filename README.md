@@ -8,9 +8,9 @@ nextjs-aws-terraform-starter/
 │
 ├── nextjs-app/                # Next.js application source code
 │   ├── src/
-│   |   └── app/               # App router directory for Next.js - where index page lives
-│   |       └── api/           # Api router directory for Next.js
-│   |           └── health/    # Health check lives here
+│   │   └── app/               # App router directory for Next.js - where index page lives
+│   │       └── api/           # Api router directory for Next.js
+│   │           └── health/    # Health check lives here
 │   ├── package.json           # Node.js dependencies and scripts
 │   └── Dockerfile             # Dockerfile for building your Next.js app
 │
